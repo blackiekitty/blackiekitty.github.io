@@ -1,6 +1,6 @@
 {
 
-"collection": // do not change this line!
+"collection":
 
 [
  
@@ -12,7 +12,5 @@
  {"link": "https://vod-progressive.akamaized.net/exp=1588015466~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2602%2F14%2F363014223%2F1492845564.mp4~hmac=562f38f2a9d83fe5f1ff370e4c1ee52ab57afde676dd9737d56bc2bee14ae976/vimeo-prod-skyfire-std-us/01/2602/14/363014223/1492845564.mp4"}
 
 ]
-
-// make sure the last link on the list ends with "} without a comma
 
 };
