@@ -1,0 +1,116 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style>html,body {overflow: hidden;width: 100%;height: 100%;margin: 0;padding: 0;}#renderCanvas {width: 100%;height: 100%;touch-action: none;}</style><script src="https://cdn.babylonjs.com/babylon.js"></script><script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script></head><body><canvas id="renderCanvas" touch-action="none"></canvas><script>
+
+var mydatabase = "";
+
+
+      var canvas = document.getElementById("renderCanvas");
+      var engine = new BABYLON.Engine(canvas, true);
+      var createScene = function() {
+        var links = [];
+        var winners = [];
+        var scene = new BABYLON.Scene(engine);
+        var skybox = BABYLON.MeshBuilder.CreateBox("skyBox", {
+          size: 1000.0
+        }, scene);
+        var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+        skyboxMaterial.backFaceCulling = false;
+        skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("https://raw.githubusercontent.com/BabylonJS/Babylon.js/master/Playground/textures/TropicalSunnyDay", scene);
+        skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+        skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+        skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+        skybox.material = skyboxMaterial;
+        var camera = new BABYLON.FollowCamera("FollowCam", new BABYLON.Vector3(0, 10, -10), scene);
+        camera.radius = 30;
+        camera.heightOffset = 0;
+        camera.lowerHeightOffsetLimit = -20;
+        camera.lowerRadiusLimit = 5;
+        camera.lowerRotationOffsetLimit = -50;
+        camera.upperHeightOffsetLimit = 20;
+        camera.upperRadiusLimit = 100;
+        camera.upperRotationOffsetLimit = 50;
+        camera.rotationOffset = 0;
+        camera.cameraAcceleration = 0.01;
+        camera.maxCameraSpeed = 20;
+        camera.attachControl(canvas, true);
+        camera.attachControl(canvas, true);
+        function loadthevideos() {
+          for (var i = 0; i < links.length; i++) {
+            var myPlane = BABYLON.MeshBuilder.CreatePlane("myPlane" + i, {
+              width: 17,
+              height: 10
+            }, scene);
+            myPlane.position.x = i % 3 * 18 - 36;
+            myPlane.position.y = 11 * (Math.floor(i / 3)) - links.length / 2 * 11;
+            myPlane.position.z = 0;
+            myPlane.rotate(BABYLON.Axis.Z, Math.PI, BABYLON.Space.WORLD);
+            var videoMat = new BABYLON.StandardMaterial("textVid", scene);
+            var videoTexture = new BABYLON.VideoTexture('video', links[i], scene, true, true);
+            videoTexture.video.pause();
+            videoMat.backFaceCulling = false;
+            videoMat.diffuseTexture = videoTexture;
+            videoMat.emissiveColor = BABYLON.Color3.White();
+            myPlane.material = videoMat;
+            winners.push(myPlane);
+          }
+          if (winners.length > 2) {
+            camera.target = winners[Math.floor(winners.length / 2)]; // version 2.4 and earlier
+            camera.lockedTarget = winners[Math.floor(winners.length / 2)];
+          } else {
+            camera.target = winners[0]; // version 2.4 and earlier
+            camera.lockedTarget = winners[0];
+          }
+        }
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", mydatabase);
+        xhttp.responseType = 'json';
+        xhttp.send();
+        xhttp.onload = function() {
+          if (xhttp.status === 200) {
+            var thefile = xhttp.response;
+            links = [];
+            for (var i = 0; i < thefile['collection'].length; i++) {
+              links.push(thefile['collection'][i]['link']);
+            }
+            loadthevideos();
+          }
+        }
+        function pauseothers(m) {
+          for (var i = 0; i < links.length; i++) {
+            if (m !== winners[i]) {
+              winners[i].material.diffuseTexture.video.pause();
+              winners[i].material.alpha = 0.2;
+              winners[i].position.z = -30;
+            }
+          }
+        }
+        scene.onPointerObservable.add(function(evt) {
+          if (evt.pickInfo.pickedMesh.material.diffuseTexture.video.paused) {
+            evt.pickInfo.pickedMesh.material.diffuseTexture.video.play();
+            pauseothers(evt.pickInfo.pickedMesh);
+            evt.pickInfo.pickedMesh.position.z = 0;
+            evt.pickInfo.pickedMesh.material.alpha = 1;
+            camera.target = evt.pickInfo.pickedMesh; // version 2.4 and earlier
+            camera.lockedTarget = evt.pickInfo.pickedMesh;
+          } //version 2.5 onwards}
+          else {
+            evt.pickInfo.pickedMesh.material.diffuseTexture.video.pause();
+
+            camera.target = evt.pickInfo.pickedMesh; // version 2.4 and earlier
+            camera.lockedTarget = evt.pickInfo.pickedMesh;
+          } //version 2.5 onwards
+        }, BABYLON.PointerEventTypes.POINTERPICK);
+        return scene;
+      };
+
+      var scene = createScene();
+      engine.runRenderLoop(function() {
+        scene.render();
+      });
+      window.addEventListener("resize", function() {
+        engine.resize();
+      });
+
+    </script>
+  </body>
+
+</html>
