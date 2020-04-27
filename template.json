@@ -2,14 +2,17 @@
 
 "collection": // do not change this line!
 
-["link": "https://vod-progressive.akamaized.net/exp=1588015442~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2128%2F13%2F335640655%2F1328272133.mp4~hmac=0235a23785defdf6947fc1e3cb747c808e27961e09e56ed776edb2da35680490/vimeo-prod-skyfire-std-us/01/2128/13/335640655/1328272133.mp4",
- "link": "https://vod-progressive.akamaized.net/exp=1588015448~acl=%2A%2F563398275.mp4%2A~hmac=c92c26d91f8e09ccfb4923fe3845f96c74014e97892e6e33c44cc6a4e5790881/vimeo-prod-skyfire-std-us/01/4800/6/174002832/563398275.mp4",
- "link": "https://vod-progressive.akamaized.net/exp=1588015454~acl=%2A%2F1184362456.mp4%2A~hmac=2982a90c52d7d4880ec0e7a1494035455e85bd8b88ae6219f5cf95de18f75efe/vimeo-prod-skyfire-std-us/01/1629/12/308149228/1184362456.mp4",
- "link": "https://vod-progressive.akamaized.net/exp=1588015453~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2727%2F14%2F363638916%2F1496390519.mp4~hmac=2e7eec17977501735d7f1b6c70d8f2c87cbf58803326137f161ee4ad62545466/vimeo-prod-skyfire-std-us/01/2727/14/363638916/1496390519.mp4",
- "link": "https://vod-progressive.akamaized.net/exp=1588015459~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F699%2F14%2F353498222%2F1436457775.mp4~hmac=f1d736b24456e2fb5d5e10b9fc8d4631737a97baa6a3d014c0ad588503f63437/vimeo-prod-skyfire-std-us/01/699/14/353498222/1436457775.mp4",
- "link": "https://vod-progressive.akamaized.net/exp=1588015466~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2602%2F14%2F363014223%2F1492845564.mp4~hmac=562f38f2a9d83fe5f1ff370e4c1ee52ab57afde676dd9737d56bc2bee14ae976/vimeo-prod-skyfire-std-us/01/2602/14/363014223/1492845564.mp4"
+[
+ 
+ {"link": "https://vod-progressive.akamaized.net/exp=1588015442~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2128%2F13%2F335640655%2F1328272133.mp4~hmac=0235a23785defdf6947fc1e3cb747c808e27961e09e56ed776edb2da35680490/vimeo-prod-skyfire-std-us/01/2128/13/335640655/1328272133.mp4"},
+ {"link": "https://vod-progressive.akamaized.net/exp=1588015448~acl=%2A%2F563398275.mp4%2A~hmac=c92c26d91f8e09ccfb4923fe3845f96c74014e97892e6e33c44cc6a4e5790881/vimeo-prod-skyfire-std-us/01/4800/6/174002832/563398275.mp4"},
+ {"link": "https://vod-progressive.akamaized.net/exp=1588015454~acl=%2A%2F1184362456.mp4%2A~hmac=2982a90c52d7d4880ec0e7a1494035455e85bd8b88ae6219f5cf95de18f75efe/vimeo-prod-skyfire-std-us/01/1629/12/308149228/1184362456.mp4"},
+ {"link": "https://vod-progressive.akamaized.net/exp=1588015453~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2727%2F14%2F363638916%2F1496390519.mp4~hmac=2e7eec17977501735d7f1b6c70d8f2c87cbf58803326137f161ee4ad62545466/vimeo-prod-skyfire-std-us/01/2727/14/363638916/1496390519.mp4"},
+ {"link": "https://vod-progressive.akamaized.net/exp=1588015459~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F699%2F14%2F353498222%2F1436457775.mp4~hmac=f1d736b24456e2fb5d5e10b9fc8d4631737a97baa6a3d014c0ad588503f63437/vimeo-prod-skyfire-std-us/01/699/14/353498222/1436457775.mp4"},
+ {"link": "https://vod-progressive.akamaized.net/exp=1588015466~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2602%2F14%2F363014223%2F1492845564.mp4~hmac=562f38f2a9d83fe5f1ff370e4c1ee52ab57afde676dd9737d56bc2bee14ae976/vimeo-prod-skyfire-std-us/01/2602/14/363014223/1492845564.mp4"}
+
 ]
 
-// make sure the last link on the list ends with " without a comma
+// make sure the last link on the list ends with "} without a comma
 
 };
